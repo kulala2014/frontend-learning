@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            color: brown;
+        }
+        
+        .div003 span {
+            border-width: 1px;
+            border-style: solid;
+        }
+        
+        span span {
+            background-color: aqua;
+        }
+        
+        .div004>span {
+            background-color: blue;
+        }
+        
+        .div005 div {
+            /* class的所有子div都会应用样式*/
+            border-width: 1px;
+            border-style: solid;
+        }
+        
+        .div006>div {
+            /* class的第一个子div会应用样式*/
+            border-width: 1px;
+            border-style: solid;
+        }
+        
+        .div007~.div008 {
+            /* 给紧跟在第一个class后的同级元素配置式样*/
+            background-color: aqua;
+        }
+        
+        .div007:hover {
+            background-color: red;
+            color: blue;
+        }
+        
+        #div008:active {
+            background-color: blueviolet;
+        }
+        
+        a:visited {
+            color: blueviolet;
+        }
+        /* style属性优先级大于id选择去大于class选择器大于tag选择器*/
+    </style>
+</head>
+
+
+<body>
+
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>4</div>
+    <div>f</div>
+    <p>3</p>
+    <p>4</p>
+    <p>df</p>
+    <p>dsfsaf</p>
+    <p>safsadf</p>
+
+    <div class='div003'>
+        <span>你好
+            <span>中国</span>
+        </span>
+    </div>
+
+    <div class='div004'>
+        <span>你好
+            <span>中国</span>
+        </span>
+    </div>
+
+    <div class='div005'>
+        <div>你好
+            <div>中国</div>
+        </div>
+    </div>
+
+    <div class='div006'>
+        <div>你好
+            <div>中国</div>
+        </div>
+    </div>
+
+    <div class='div007'>1</div>
+    <div class='div008' id='div008'>1</div>
+    <div class='div008' id='div009'>1</div>
+    <div class='div008'>1</div>
+    <div class='div008'>1</div>
+    <div class='div008'>1</div>
+    <div class='div008'>1</div>
+    <a href="https://www.baidu.com">baidu</a>
+
+</body>
+
+</html>

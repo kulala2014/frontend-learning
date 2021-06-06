@@ -1,0 +1,14 @@
+1.sv_cheats  1/0(1:open, 0:close) 作弊开启
+2.bot_kick 剔出电脑
+3.god  1/0(1:open, 0:close) 神仙模式
+4.mp_startmoney 16000
+5.mp_roundtime_defuse 60 round time is set to 60 minutes
+6.mp_buytime 9999
+7.mp_freezetime 0
+8.mp_buy_anywhere 1/0(1:open, 0:close)
+9.sv_grenade_trajectory 1/0(1:open, 0:close) 抛掷物轨迹 (need open cheats)
+10.noclip 穿墙 /bind "F4" "noclip" 绑定按键F4穿墙
+11.sv_infinite_aemo 1/0(1:open, 0:close) 无限弹药手雷
+12.mp_restartgame 1 重启回合
+
+exec 123
