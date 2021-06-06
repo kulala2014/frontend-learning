@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <pre>
+    <ul>
+        <li>表单标签侧重于与后端发送数据</li>
+        <li>主要以input标签为主，辅之以name属性，通过form表单向后端发送数据</li>
+        <li>除了input还有textarea 下拉菜单标签select</li>
+        <li>input文本标签属性:
+            <ul>
+                <li>type: text,count,date, button, radio, checked, hidden, submit 等</li>
+                <li>name:设置的值必须和后端接受前端数据的参数名一致</li>
+                <li>value:显示在页面的值，除了type="hidden"</li>
+            </ul>
+        </li>
+    </ul>
+</pre>
+
+    <form action="https://www.baidu.com/s" method="GET">
+        <input type="text" name="name" value="">
+        <br>
+        <input type="count" name="count" value="6">
+        <br>
+        <input type="date" name="date" value=''>
+        <br>
+        <input type="radio" name='gender' value='male'>boy
+        <input type="radio" name='gender' value='female'>girl
+        <br>
+        <br>
+        <input type="checkbox" name='interest' value='football'>football
+        <input type="checkbox" name='interest' value='basketball'>basketball
+        <br>
+        <input type="hidden" name='hiddenfield' value=''>
+        <br>
+        <select name="class" id="classID">
+            <option value="1">一班</option>
+            <option value="2">二班</option>
+        </select>
+        <input type="submit" value='提交'>
+        <input type="reset" value="重置">
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+div {
+    color: aliceblue;
+    width: 100px;
+    height: 100px;
+    background-color: greenyellow;
+}
+
+p {
+    background-color: aqua;
+}
+
+#div001 {
+    background-color: brown;
+}
+
+.div002 {
+    background-color: darkgoldenrod;
+}
+
+p.div002 {
+    background-color: blue;
+}
+
+#p001 {
+    background-color: black;
+}

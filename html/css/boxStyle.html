@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            /*width,height是盒子模型实际内容的宽度和高度*/
+            width: 100px;
+            height: 100px;
+            background-color: chocolate;
+        }
+        
+        .div1 {
+            /*宽度，样式，颜色*/
+            border: 1px solid red;
+            border-bottom: 2px dashed blue;
+            /*margin外边距，上，右，下，左*/
+            /*margin设置一个值代表四个方向设置*/
+            /*margin设置2个值代表第一个代表上下，第二个代表左右*/
+            margin: 100px 20px 13px 34px;
+            padding: 100px 20px 30px, 40px;
+        }
+        
+        .div2 {
+            margin: 0 auto;
+        }
+        
+        .div3 {
+            width: 300px;
+            border: 25px solid green;
+            padding: 25px;
+            margin: 25px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>盒子模型演示</h2>
+    <p>css盒子模型本质上是一个盒子，所有HTML元素可以看作是一个盒子，在css中， box model是用来设计和布局时使用的。</p>
+    <p>包括了外边距，边框，内边距，和实际内容</p>
+    <div class="div3">300px + 25px *2 + 25px *2 + 25px *2=450px</div>
+    <div class='div1'>div testing with box</div>
+    <div class="div2"></div>
+</body>
+
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .div1 {
+            height: 100px;
+            width: 100px;
+            position: absolute;
+            top: 0;
+        }
+        
+        div {
+            height: 100px;
+            width: 100px;
+            display: inline-block;
+        }
+        
+        span {
+            height: 100px;
+            width: 100px;
+            background-color: blue;
+            display: block;
+        }
+        
+        table {
+            width: 300px;
+            height: 300px;
+            border: 2px solid red;
+            border-collapse: separate;
+            border-spacing: 10px 20px;
+        }
+        
+        td {
+            border: 2px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+        z-index的值越高的元素显示在最上层。
+    </pre>
+    <!-- <div class="div1" style="background-color: red; z-index: 10;"></div>
+    <div class="div1" style="background-color: aqua; z-index: 11;"></div> -->
+
+
+    <pre>
+        呈现形式：display: none | block | inline | inline-block
+        <li>block:块级标签，可设置宽，高，元素独占一行</li>
+        <li>inline：行级标签，不可设置宽，高，元素自适应内部内容</li>
+        <li>inline-block: 介于block与inline之间，可设置宽， 高，但是不会独占一行</li>
+    </pre>
+
+    <div style="background-color: red;">test</div>
+    <div style="background-color:aqua; ">testewt</div>
+    <span></span>
+
+    <pre>
+        border-collapse: collapse:表格合成一条线；separate:默认为此值。
+        border-spacing:设置boder间距离，设置一个值的话，左右上下一起设置。设置2个值的话，第一个是左右，第二个是上下。(只有在boder-collapse:collapse)
+    </pre>
+    <table>
+        <tr>
+            <td>a</td>
+            <td>b</td>
+            <td>c</td>
+        </tr>
+        <tr>
+            <td>a</td>
+            <td>b</td>
+            <td>c</td>
+        </tr>
+        <tr>
+            <td>a</td>
+            <td>b</td>
+            <td>c</td>
+        </tr>
+    </table>
+
+</body>
+
+</html>
