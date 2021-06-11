@@ -1,0 +1,29 @@
+.output {
+    margin: 0 auto;
+    box-shadow: -3px 0px 0px blue;
+    width: 500px;
+    height: 500px;
+    border: 1px solid rgb(58, 117, 226);
+    padding-left: 10px;
+}
+
+ul {
+    margin-left: 0;
+    padding: 1px;
+}
+
+ul li {
+    display: block;
+    border: 1px solid black;
+    background-color: rgb(124, 124, 235);
+    height: 20px;
+    width: 90px;
+    float: left;
+    margin: 3px;
+}
+
+#current {
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+}

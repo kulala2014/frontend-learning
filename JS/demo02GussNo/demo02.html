@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style link='./main.css'></style>
+    <script async src="./main.js"></script>
+
+</head>
+
+<body>
+    <h1> 猜数字游戏</h1>
+    <p class='player'>玩家1：小明</p>
+    <div>
+        <p>我刚才随机选定了一个100以内的自然数。看你能否在 10 次以内猜中它。每次我都会告诉你所猜的结果是高了还是低了。</p>
+        <p>猜数字: <input type="text" id='inputNo'> <input type="button" value="确定" id='confirm'></p>
+        <p id='lastGuess'></p>
+        <p id='msg'></p>
+        <p id='tipMsg'></p>
+        <input type="button" id='reset' value="重新开始游戏" style="display: none;">
+    </div>
+</body>
+
+</html>
