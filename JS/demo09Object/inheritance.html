@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <pre>
+    <p>JavaScript使用了另一套实现方式，继承的对象函数并不是通过复制而来，而是通过<strong>原型链继承（通常被称为 原型式继承 —— prototypal inheritance）</strong></p>
+    <code>
+        function Person(first, last, age, gender, interests) {
+            this.name = {
+              first,
+              last
+            };
+            this.age = age;
+            this.gender = gender;
+            this.interests = interests;
+          };
+
+        Person.prototype.bio = function() {
+            let bioMsg = this.name.first + ' ' + this.name.last + ' is ' + this.age + ' years old.';
+            if (this.interests.length > 0) {
+                let interestStr = interests.join(' , ');
+                if (this.gender === 'male') {
+                    bioMsg += ' He likes ';
+                } else {
+                    bioMsg += 'She likes';
+                }
+                if (interests.length > 1) {
+                    let lastIndex = interestStr.lastIndexOf(',');
+                    interestStr = changeStr(interestStr, lastIndex, 'and ') + '.';
+                }
+                bioMsg += interestStr;
+            }
+            alert(bioMsg);
+        };
+    
+        Person.prototype.greeting = function() {
+            alert('Hi! I\'m ' + this.name.first + '.');
+        };
+        Person.prototype.farewell = function() {
+            alert(this.name.first + ' has left the building. Bye for now!');
+        }
+    
+        Person.prototype.fullName = function() {
+            return this.name.first + ' ' + this.name.last;
+        }
+
+        function Teacher(first, last, age, gender, interests, subject) {
+        Person.call(this, first, last, age, gender, interests);
+        this.subject = subject;
+    }
+    </code>
+    <p>这一步只是继承了Person类的属性，并没有继承Person类prototype上的方法</p>
+    <p>使用以下方法继承person类的方法,但是也会带来一个问题，会让Teacher 的构造函数变为Person： Teacher.prototype.constructor.name = Person</p>
+    <code>
+        Teacher.prototype = Object.create(Person.prototype);
+    </code>
+    <p>需要使用一下命令重新修改Teather的构造方法</p>
+    <code>
+        Object.defineProperty(Teacher.prototype, 'constructor', {
+            value: Teacher,
+            enumerable: false, //so that it does not appear in 'for in ' loop
+            writable: true
+        });
+    </code>
+    <code>
+        function Brick() {
+            this.width = 10;
+            this.height = 20;
+          }
+
+        function BlueGlassBrick() {
+        Brick.call(this);
+        
+        this.opacity = 0.5;
+        this.color = 'blue';
+        }
+    </code>
+</pre>
+</body>
+<script>
+    function changeStr(str, index, changeStr) {
+        return str.substr(0, index) + changeStr + str.substr(index + changeStr.length);
+    }
+
+    function Person(first, last, age, gender, interests) {
+        this.name = {
+            first,
+            last
+        };
+        this.age = age;
+        this.gender = gender;
+        this.interests = interests;
+    };
+    Person.prototype.bio = function() {
+        let bioMsg = this.name.first + ' ' + this.name.last + ' is ' + this.age + ' years old.';
+        if (this.interests.length > 0) {
+            let interestStr = this.interests.join(' , ');
+            if (this.gender === 'male') {
+                bioMsg += ' He likes ';
+            } else {
+                bioMsg += 'She likes';
+            }
+            if (this.interests.length > 1) {
+                let lastIndex = interestStr.lastIndexOf(',');
+                interestStr = changeStr(interestStr, lastIndex, 'and ') + '.';
+            }
+            bioMsg += interestStr;
+        }
+        alert(bioMsg);
+    };
+
+    Person.prototype.greeting = function() {
+        alert('Hi! I\'m ' + this.name.first + '.');
+    };
+    Person.prototype.farewell = function() {
+        alert(this.name.first + ' has left the building. Bye for now!');
+    }
+
+    Person.prototype.fullName = function() {
+        return this.name.first + ' ' + this.name.last;
+    }
+
+    function Teacher(first, last, age, gender, interests, subject) {
+        Person.call(this, first, last, age, gender, interests);
+        this.subject = subject;
+    }
+    Teacher.prototype = Object.create(Person.prototype);
+
+    Object.defineProperty(Teacher.prototype, 'constructor', {
+        value: Teacher,
+        enumerable: false, //so that it does not appear in 'for in ' loop
+        writable: true
+    });
+
+    Teacher.prototype.greeting = function() {
+        let prefix;
+
+        if (this.gender === 'male' || this.gender === 'Male' || this.gender === 'm' || this.gender === 'M') {
+            prefix = 'Mr.';
+        } else if (this.gender === 'female' || this.gender === 'Female' || this.gender === 'f' || this.gender === 'F') {
+            prefix = 'Mrs.';
+        } else {
+            prefix = 'Mx.';
+        }
+
+        alert('Hello. My name is ' + prefix + ' ' + this.name.last + ', and I teach ' + this.subject + '.');
+    }
+</script>
+
+</html>

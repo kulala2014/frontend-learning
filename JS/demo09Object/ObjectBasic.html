@@ -27,6 +27,78 @@
             alert('Hi! I\'m ' + this.name.first + '.');
         }
     };
+
+    //类名大写以和普通函数区分开
+    function Person1(name) {
+        this.name = name;
+        this.greeting = function() {
+            alert('HI I\'M ' + this.name);
+        };
+    }
+
+    let ps1 = new Person1('Bob');
+    let ps2 = new Person1('Sarah');
+    console.log(ps1.name);
+    ps1.greeting();
+    ps2.greeting();
+
+    function changeStr(str, index, changeStr) {
+        return str.substr(0, index) + changeStr + str.substr(index + changeStr.length);
+    }
+
+    function PersonV3(first, last, age, gender, interests) {
+        this.name = {
+            'first': first,
+            'last': last
+        };
+        this.age = age;
+        this.gender = gender;
+        this.interests = interests;
+        this.bio = function() {
+            let bioMsg = this.name.first + ' ' + this.name.last + ' is ' + this.age + ' years old.';
+            if (this.interests.length > 0) {
+                let interestStr = interests.join(' , ');
+                if (this.gender === 'male') {
+                    bioMsg += ' He likes ';
+                } else {
+                    bioMsg += 'She likes';
+                }
+
+                if (interests.length > 1) {
+                    let lastIndex = interestStr.lastIndexOf(',');
+                    interestStr = changeStr(interestStr, lastIndex, 'and ') + '.';
+                }
+                bioMsg += interestStr;
+            }
+
+
+
+            alert(bioMsg);
+        };
+        this.greeting = function() {
+            alert('Hi! I\'m ' + this.name.first + '.');
+        };
+    }
+    let ps3 = new PersonV3('Bob', 'Smith', 32, 'male', ['music', 'skiing', 'basketball']);
+    console.log(ps3);
+
+    let ps4 = new Object();
+    ps4.name = 'Chris';
+    ps4['age'] = 38;
+    ps4.greeting = function() {
+        alert('Hi! I\'m ' + this.name + '.');
+    }
+
+    let ps5 = new Object({
+        name: 'kulala',
+        age: 35,
+        greeting: function() {
+            alert('Hi! I\'m ' + this.name + '.');
+        }
+    });
+
+    let ps6 = Object.create(ps5);
+    ps6.name = 'lllaa';
 </script>
 
 </html>

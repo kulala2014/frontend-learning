@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>class</h1>
+    <pre>
+        <p>class是在ES6引入的语法糖，实际的底层还是会转化为原型链对象继承</p>
+        <code>        
+            class Person {
+                constructor(first, last, age, gender, interests) {
+                    this.name = {
+                        first,
+                        last
+                    };
+                    this.age = age;
+                    this.gender = gender;
+                    this.interests = interests;
+                }
+
+                greeting() {
+                    console.log(`HI!~ I'm ${this.name.first}`);
+                };
+                farewell() {
+                    console.log(`${this.name.first} has left the building,byb!`);
+                };
+            }
+
+            class Teacher extends Person {
+                constructor(first, last, age, gender, interests, subject, grade) {
+                    super(first, last, age, gender, interests);
+                    this.subject = subject;
+                    this.grade = grade;
+                }
+            }
+    </code>
+        <p><strong>Getters and Setters</strong></p>
+        <p>有时我们可能想要更改我们创建的类中属性的值，或者我们不知道属性的最终值是什么。
+            我们可以使用 getter 和 setter 来处理这种情况。
+            getter 和 setter 成对工作。 getter 返回变量的当前值，其相应的 setter 将变量的值更改为它定义的值。</p>
+            <code>
+                class Teacher extends Person {
+                    constructor(first, last, age, gender, interests, subject, grade) {
+                        super(first, last, age, gender, interests);
+                        this._subject = subject;
+                        this.grade = grade;
+                    }
+        
+                    get subject() {
+                        return this._subject;
+                    };
+                    set subject(newSubject) {
+                        this._subject = newSubject;
+                    };
+        
+                }
+            </code>
+    </pre>
+    <script>
+        class Person {
+            constructor(first, last, age, gender, interests) {
+                this.name = {
+                    first,
+                    last
+                };
+                this.age = age;
+                this.gender = gender;
+                this.interests = interests;
+            }
+
+            greeting() {
+                console.log(`HI!~ I'm ${this.name.first}`);
+            };
+            farewell() {
+                console.log(`${this.name.first} has left the building,byb!`);
+            };
+        }
+
+        class Teacher extends Person {
+            constructor(first, last, age, gender, interests, subject, grade) {
+                super(first, last, age, gender, interests);
+                this._subject = subject;
+                this.grade = grade;
+            }
+
+            get subject() {
+                return this._subject;
+            };
+            set subject(newSubject) {
+                this._subject = newSubject;
+            };
+
+        }
+
+        let han = new Person('Han', 'Solo', 25, 'male', ['Smuggling']);
+        let leia = new Person('Leia', 'Organa', 19, 'female', ['Government']);
+        han.greeting();
+        leia.farewell();
+
+        let snape = new Teacher('Severus', 'Snape', 58, 'male', ['Potions'], 'Dark arts', 5);
+        snape.greeting(); // Hi! I'm Severus.
+        snape.farewell(); // Severus has left the building. Bye for now.
+        snape.age // 58
+        snape.subject; // Dark arts
+    </script>
+</body>
+
+</html>

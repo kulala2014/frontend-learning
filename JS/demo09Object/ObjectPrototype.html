@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <pre>
+        <p>JavaScript 常被描述为一种基于原型的语言 (prototype-based language)——每个对象拥有一个原型对象，对象以其原型为模板、从原型继承方法和属性。原型对象也可能拥有原型，并从中继承方法和属性，一层一层、以此类推。这种关系常被称为原型链 (prototype chain)，它解释了为何一个对象会拥有定义在其他对象中的属性和方法</p>
+        <p>一种极其常见的对象定义模式是，在构造器（函数体）中定义属性、在 prototype 属性上定义方法</p>
+        <code>
+            function Person(first, last, age, gender, interests) {
+                this.name = {
+                    'first': first,
+                    'last': last
+                };
+                this.age = age;
+                this.gender = gender;
+                this.interests = interests;
+            }
+            Person.prototype.bio = function() {
+                let bioMsg = this.name.first + ' ' + this.name.last + ' is ' + this.age + ' years old.';
+                if (this.interests.length > 0) {
+                    let interestStr = interests.join(' , ');
+                    if (this.gender === 'male') {
+                        bioMsg += ' He likes ';
+                    } else {
+                        bioMsg += 'She likes';
+                    }
+                    if (interests.length > 1) {
+                        let lastIndex = interestStr.lastIndexOf(',');
+                        interestStr = changeStr(interestStr, lastIndex, 'and ') + '.';
+                    }
+                    bioMsg += interestStr;
+                }
+                alert(bioMsg);
+            };
+        
+            Person.prototype.greeting = function() {
+                alert('Hi! I\'m ' + this.name.first + '.');
+            };
+            Person.prototype.farewell = function() {
+                alert(this.name.first + ' has left the building. Bye for now!');
+            }
+        
+            Person.prototype.fullName = function() {
+                return this.name.first + ' ' + this.name.last;
+            }
+        </code>
+    </pre>
+</body>
+<script>
+    function Person(first, last, age, gender, interests) {
+        this.name = {
+            'first': first,
+            'last': last
+        };
+        this.age = age;
+        this.gender = gender;
+        this.interests = interests;
+    }
+    Person.prototype.bio = function() {
+        let bioMsg = this.name.first + ' ' + this.name.last + ' is ' + this.age + ' years old.';
+        if (this.interests.length > 0) {
+            let interestStr = this.interests.join(' , ');
+            if (this.gender === 'male') {
+                bioMsg += ' He likes ';
+            } else {
+                bioMsg += 'She likes';
+            }
+            if (this.interests.length > 1) {
+                let lastIndex = interestStr.lastIndexOf(',');
+                interestStr = changeStr(interestStr, lastIndex, 'and ') + '.';
+            }
+            bioMsg += interestStr;
+        }
+        alert(bioMsg);
+    };
+
+    Person.prototype.greeting = function() {
+        alert('Hi! I\'m ' + this.name.first + '.');
+    };
+    Person.prototype.farewell = function() {
+        alert(this.name.first + ' has left the building. Bye for now!');
+    }
+
+    Person.prototype.fullName = function() {
+        return this.name.first + ' ' + this.name.last;
+    }
+
+    let person = new Person('Bob', 'Smith', 32, 'male', ['music', 'skiing']);
+    let person1 = Object.create(person);
+    let person3 = new person1.constructor('Karen', 'Stephenson', 26, 'female', ['playing drums', 'mountain climbing']);
+</script>
+
+</html>
