@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Our superheroes</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Faster+One" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <h1>JSON</h1>
+    <pre>
+       <p> <strong>什么是json</strong></p>
+       <p>json是一种按照js对象语法的数据格式，基于js语法，但独立于js。作为对象或者字符串存在。json对象可以存储在一个.json文件中，MIME—type用application/json</p>
+       <p>我们可以把JavaScript 对象原原本本的写入 JSON 数据——字符串，数字，数组，布尔还有其它的字面值对象</p>
+       <ul>
+           <li>JSON是一种纯数据格式，它只包含属性，没有方法。</li>
+           <li>JSON要求在字符串和属性名称周围使用双引号，单引号无效。</li>
+           <li>一个错误的逗号或者分号就可以导致JSON文件出错。</li>
+           <li>JSON可以将任何合法的js数据格式保存，不只是数组和对象。单一的一个字符串或者数字也可以是合法的可以使用<a href="https://jsonlint.com/">jsonLint</a>格式化</li>
+           <li>与js袋中对象属性可以不加引号不同，json中只有带引号的字符串可以用作属性。</li>
+           
+       </ul>
+    </pre>
+    <header></header>
+    <section></section>
+    <script>
+        const header = document.querySelector('header');
+        const section = document.querySelector('section');
+
+        let requestURL = 'https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json';
+        let request = new XMLHttpRequest();
+        request.open('GET', requestURL);
+        request.responseType = 'json';
+        request.send();
+
+        request.onload = function() {
+            if (request.status === 200) {
+                let superHeroes = request.response;
+                populateHeader(superHeroes);
+                showHeroes(superHeroes);
+            } else {
+                alert('Get data, error occured');
+            }
+        }
+
+        function populateHeader(data) {
+            let myH1 = document.createElement('h1');
+            myH1.textContent = data['squadName'];
+            header.appendChild(myH1);
+
+            let para = document.createElement('p');
+            para.textContent = 'HomeTown: ' + data['homeTown'] + ' // Formed: ' + data['formed'];
+            header.appendChild(para);
+        }
+
+        function showHeroes(data) {
+            let heros = data['members'];
+            for (let i = 0; i < heros.length; i++) {
+                let artice = document.createElement('article');
+                let myH2 = document.createElement('h2');
+                let para1 = document.createElement('p');
+                let para2 = document.createElement('p');
+                let para3 = document.createElement('p');
+                let powerList = document.createElement('ul');
+
+                myH2.textContent = heros[i]['name'];
+                para1.textContent = 'Age :' + heros[i]['age'];
+                para2.textContent = 'Secret identity: ' + heros[i]['secretIdentity'];
+                para3.textContent = 'SuperPowers:';
+
+                for (let item of heros[i]['powers']) {
+                    let powerItem = document.createElement('li');
+                    powerItem.textContent = item;
+                    powerList.appendChild(powerItem);
+                }
+
+                artice.appendChild(myH2);
+                artice.appendChild(para1);
+                artice.appendChild(para2);
+                artice.appendChild(para3);
+                artice.appendChild(powerList);
+
+                section.appendChild(artice);
+            }
+        }
+    </script>
+</body>
+
+</html>
