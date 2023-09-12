@@ -1,5 +1,7 @@
 # frontend-learning
 
+#React UseEffect dependencies 
+
 What to add & Not to add as Dependencies
 In the previous lecture, we explored useEffect() dependencies.
 
